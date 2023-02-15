@@ -12,6 +12,8 @@ If the library is not working as expected, you may need to add the following lin
 ```
 
 ## Demo
+[Live Demo](https://fahimkk.github.io/react-recurring-job-demo/)
+
 ![Image](https://github.com/fahimkk/react-recurring-job/blob/main/src/assets/weekly.png)
 ![Image](https://github.com/fahimkk/react-recurring-job/blob/main/src/assets/monthly.png)
 
