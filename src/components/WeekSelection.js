@@ -47,7 +47,7 @@ function WeekSelection(props) {
 		</div>
 		<div className={css.weekCheckBoxContainer}>
 			{WEEKDAYS_MAP.map(item => (
-				<label >
+				<label key={item.name}>
 					<input 
                         disabled={disabled}
 						checked={selectedWeeks.includes(item.value)}

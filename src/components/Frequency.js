@@ -25,6 +25,7 @@ function Frequency(props) {
       <div>
         <label className={css.repeatLabel} style={styles.repeatLabel} >Repeat</label>
         <select
+          key='repeat'
           style={styles.repeatDropdown}
           disabled={disabled}
           value={repeat}
@@ -34,7 +35,7 @@ function Frequency(props) {
           onChange={handleRepeatClick}
         >
           {repeatOptions.map(item => (
-            <option value={item}>{item}</option>
+            <option key={item} value={item}>{item}</option>
           ))}
         </select>
       </div>
@@ -49,9 +50,8 @@ function Frequency(props) {
             onChange={handleFrequencyChange}
             type='number'
             min={1}
-            defaultValue={1}
           />
-          <label className={css.selectedRepeatlLabel} style={styles.selectedRepeatlLabel}>{repeat.slice(0,-2)}(s)</label>
+          <label className={css.selectedRepeatlLabel} style={styles.selectedRepeatlLabel}>{repeat?.slice(0,-2)}(s)</label>
         </div> 
       )}
     </div>

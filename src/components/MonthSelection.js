@@ -56,6 +56,7 @@ function MonthSelection(props) {
                         onChange={handleMonthOptionChange}
                     />
                     <select 
+                        key='standardMonthOption'
                         disabled={disabled || monthOption !== 'standard'}
                         value={selectedMonthDate}
                         className={css.dayDropdown}
@@ -63,7 +64,7 @@ function MonthSelection(props) {
                         onChange={handleMonthDateChange}
                     >
                         {daysArr.map(item => (
-                            <option value={item}>{item}</option>
+                            <option key={item} value={item}>{item}</option>
                         ))}
                     </select>
                     <label 
@@ -86,6 +87,7 @@ function MonthSelection(props) {
                         onChange={handleMonthOptionChange}
                     />
                     <select 
+                        key='orderSelection'
                         disabled={disabled || monthOption !== 'custom'}
                         value={selectedMonthDayOrder}
                         className={css.orderDropdown}
@@ -94,10 +96,11 @@ function MonthSelection(props) {
                     >
                         {OrderOptions.map(item => {
                             const optionDisable = !['First', 'Last'].includes(item) && selectedMonthDay === 'Weekday'
-                            return <option disabled={optionDisable} value={item}>{item}</option>
+                            return <option key={item} disabled={optionDisable} value={item}>{item}</option>
                         })}
                     </select>
                     <select 
+                        key='weekdaySelection'
                         disabled={disabled || monthOption !== 'custom'}
                         value={selectedMonthDay}
                         className={css.monthWeekdayDropdown}
@@ -106,7 +109,7 @@ function MonthSelection(props) {
                     >
                         {weekDaysOptions().map(item => {
                             const optionDisable = item.name === 'Weekday' && !['First', 'Last'].includes(selectedMonthDayOrder)
-                            return <option disabled={optionDisable} value={item.name}>{item.name}</option>
+                            return <option key={item.name} disabled={optionDisable} value={item.name}>{item.name}</option>
                         })}
                     </select>
                 </div>

@@ -24,7 +24,7 @@ function DateSelection(props) {
     return (
         <div className={css.mainContainer} style={styles.dateContainer}>
             <div className={css.startContainer}>
-                <label for="start" style={styles.startLabel}>Start</label>
+                <label style={styles.startLabel}>Start</label>
                 <input
                     disabled={disabled}
                     value={startDate}
@@ -39,15 +39,16 @@ function DateSelection(props) {
             <div className={css.endContainer}>
                 <label style={styles.endLabel}>End</label>
                 <select 
+                    key='endType'
                     disabled={disabled}
                     value={selectedEndType}
                     className={css.endType}
                     style={styles.endType}
                     onChange={handleEndTypeChange}
                 >
-                    <option value='noend'>no end date</option>
-                    <option value='date'>on this day</option>
-                    <option value='count'>after</option>
+                    <option key={'noend'} value='noend'>no end date</option>
+                    <option key={'date'} value='date'>on this day</option>
+                    <option key={'count'} value='count'>after</option>
                 </select>
                 {selectedEndType === 'date' ? 
                     <input 
@@ -70,7 +71,6 @@ function DateSelection(props) {
                             style={styles.endCount}
                             type='number'
                             min={1}
-                            defaultValue={10}
                         />
                         <label style={{marginLeft: 10}}>occurance</label>
                     </>

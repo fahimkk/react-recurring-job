@@ -61,7 +61,7 @@ export const reducer = (state, action) => {
         case ACTION_TYPES.SetInitialProps:
             return {
                 ...state,
-                repeat: action.payload?.repeat,
+                repeat: action.payload?.repeat || 'weekly',
                 disabled: action.payload?.disabled,
                 showFrequency: action.payload?.showFrequency,
                 frequency: action.payload?.frequency || 1,

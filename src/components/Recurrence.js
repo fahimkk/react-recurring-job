@@ -6,7 +6,7 @@ export const Recurrence = (props) => {
 
   return (
     <RecurrenceProvider>
-      <RecurrenceComponent {...props} root={root}/>
+      <RecurrenceComponent {...props} />
     </RecurrenceProvider>
   );
 }

@@ -45,6 +45,9 @@ export default App;
 | styles | object |  | React style object  | No |
 
 ### value props
+
+value prop can be used to pass default values
+
 | Names  | Type           | Default | Description | Mandatory |
 | ------ | -------------- |---------|-------------| --------- |
 | startDate| Date/String | new Date()|The starting date of the recurring event| No |
