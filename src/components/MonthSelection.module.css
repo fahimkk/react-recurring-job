@@ -24,11 +24,16 @@
     display:flex;
     flex-direction: row;
 }
-.dateSelector {
+.dayDropdown {
     width: 50px;
     margin-left: 10px;
 }
-.daySelector {
+.orderDropdown {
+    width: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.monthWeekdayDropdown {
     width: 100px;
     margin-left: 10px;
     margin-right: 10px;
@@ -40,7 +45,10 @@
 .orLabel {
     margin-left: 10px;
     margin-right: 10px;
+    font-size: 18px;
 }
 .onLabel {
     margin-right: 20px;
+    font-size: 16px;
+    margin-top: 3px;
 }

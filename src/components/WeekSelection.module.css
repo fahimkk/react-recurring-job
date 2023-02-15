@@ -21,10 +21,10 @@
 
 
 
-.dayContainer {
+.weekdayBtnContainer {
     margin: 10px;
 }
-.weekCircle {
+.weekdayBtn {
     border: 1px;
     background-color: #aaa;
     border-color: '#6b6b6b';
@@ -33,7 +33,7 @@
     height: 40px;
     width: 40px;
 }
-.selectedWeekCircle {
+.selectedWeekdayBtn {
     border: 1px;
     background-color: #4EAEEC;
     border-color: '#6b6b6b';
@@ -42,6 +42,6 @@
     height: 40px;
     width: 40px;
 }
-.checkboxLabel {
+.weekdayFullTextLabel {
     margin-left: 5px;
 }

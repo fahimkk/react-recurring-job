@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react'
-import styles from './Frequency.module.css'
+import React, { useContext } from 'react'
+import css from './Frequency.module.css'
 import { RecurrenceContext } from '../context/recurrence-context';
 import { ACTION_TYPES } from '../context/actionTypes';
 
@@ -7,6 +7,7 @@ const repeatOptions = ['weekly', 'monthly']
 
 
 function Frequency(props) {
+  const styles = props?.styles || {}
   const {recurrenceData, dispatch} = useContext(RecurrenceContext);
   const {repeat, showFrequency, frequency, disabled} = recurrenceData
 
@@ -20,13 +21,14 @@ function Frequency(props) {
 
 
   return (
-    <div className={styles.mainContainer} style={props?.styles?.frequencyContainer}>
+    <div className={css.mainContainer} style={styles.frequencyContainer}>
       <div>
-        <label className={styles.labelRepeat} >Repeat</label>
+        <label className={css.repeatLabel} style={styles.repeatLabel} >Repeat</label>
         <select
+          style={styles.repeatDropdown}
           disabled={disabled}
           value={repeat}
-          className={styles.selectRepeat}
+          className={css.repeatDropdown}
           name='repeat'
           id='repeat'
           onChange={handleRepeatClick}
@@ -36,21 +38,22 @@ function Frequency(props) {
           ))}
         </select>
       </div>
-      {showFrequency &&
-      <div className={styles.frequencyContainer}>
-        <label className={styles.labelEvery} >Every</label>
-        <input 
+      {showFrequency && (
+        <div className={css.frequencyContainer}>
+          <label className={css.everyLabel} style={styles.everyLabel} >Every</label>
+          <input 
+            style={styles.frequencyInput}
             disabled={disabled}
-            className={styles.input}
+            className={css.frequencyInput}
             value={frequency}
             onChange={handleFrequencyChange}
             type='number'
             min={1}
             defaultValue={1}
           />
-        <label className={styles.labelResult}>{repeat.slice(0,-2)}(s)</label>
-      </div> 
-      }
+          <label className={css.selectedRepeatlLabel} style={styles.selectedRepeatlLabel}>{repeat.slice(0,-2)}(s)</label>
+        </div> 
+      )}
     </div>
   )
 }

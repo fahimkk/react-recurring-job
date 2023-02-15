@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import styles from './WeekSelection.module.css';
+import css from './WeekSelection.module.css';
 import { WEEKDAYS_MAP } from '../utils/weekConstants';
 import { RecurrenceContext } from '../context/recurrence-context';
 import { ACTION_TYPES } from '../context/actionTypes';
 
 function WeekSelection(props) {
+  	const styles = props?.styles || {}
     const {recurrenceData, dispatch} = useContext(RecurrenceContext);
     const {selectedWeeks, disabled} = recurrenceData;
 
@@ -25,16 +26,17 @@ function WeekSelection(props) {
 	}
 
 	return (
-		<div style={props?.styles?.weekContainer}>
-		<div className={styles.container}>
+		<div style={styles.weekContainer}>
+		<div className={css.container}>
 			{WEEKDAYS_MAP.map((res, key) => {
 				return (
-					<div key={key} className={styles.dayContainer}>
+					<div key={key} className={css.weekdayBtnContainer} style={styles.weekdayBtnContainer}>
 						<button
 							type="button"
                             disabled={disabled}
 							value={res.value}
-							className={selectedWeeks.includes(res.value) ? styles.selectedWeekCircle :styles.weekCircle}
+							className={selectedWeeks.includes(res.value) ? css.selectedWeekdayBtn : css.weekdayBtn}
+							style={selectedWeeks.includes(res.value) ? styles.selectedWeekdayBtn : styles.weekdayBtn}
 							onClick={event => handleWeekDaysChange(res.value)}
 						>
 							{res.name.slice(0, 3)}
@@ -43,7 +45,7 @@ function WeekSelection(props) {
 				);
 			})}
 		</div>
-		<div className={styles.weekCheckBoxContainer}>
+		<div className={css.weekCheckBoxContainer}>
 			{WEEKDAYS_MAP.map(item => (
 				<label >
 					<input 
@@ -53,7 +55,10 @@ function WeekSelection(props) {
 						onChange={handleWeekDaySelectChange}
 						value={item.value}
 					/>
-					<span className={styles.checkboxLabel}>
+					<span 
+						className={css.weekdayFullTextLabel}
+						style={selectedWeeks.includes(item.value) ? styles.selectedWeekdayFullTextLabel : styles.weekdayFullTextLabel}
+					>
 						{item.name}
 					</span>
 				</label>

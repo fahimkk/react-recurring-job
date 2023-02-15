@@ -9,25 +9,25 @@
     .frequencyContainer {
         margin-top: 20px;
     }
-    .input{
+    .frequencyInput{
         margin-left: 6px;
     }
 }
 
-.labelRepeat {
+.repeatLabel {
     margin-right: 20px;
 }
-.selectRepeat {
+.repeatDropdown {
     width: 80px;
     margin-right: 40px;
 }
 
-.labelEvery {
+.everyLabel {
     margin-right: 20px;
 }
-.input {
+.frequencyInput {
     width: 50px;
 }
-.labelResult {
+.selectedRepeatlLabel {
     margin-left: 10px;
 }

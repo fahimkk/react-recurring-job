@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import { ACTION_TYPES } from '../context/actionTypes';
 import { RecurrenceContext } from '../context/recurrence-context';
-import styles from './DateSelection.module.css';
+import css from './DateSelection.module.css';
 
-function DateSelection() {
+function DateSelection(props) {
+  	const styles = props?.styles || {}
     const {recurrenceData, dispatch} = useContext(RecurrenceContext);
     const {selectedEndType, startDate, endDate, endCount, disabled} = recurrenceData
 
@@ -21,58 +22,62 @@ function DateSelection() {
     }
 
     return (
-        <div className={styles.mainContainer}>
-            <div className={styles.startContainer}>
-            <label for="start">Start</label>
-            <input
-                disabled={disabled}
-                value={startDate}
-                onChange={handleStartDateChange}
-                className={styles.startDate}
-                type="date"
-                id="start"
-                name="start"
-            />
-            </div>
-            <div className={styles.endContainer}>
-            <label>End</label>
-            <select 
-                disabled={disabled}
-                value={selectedEndType}
-                className={styles.endTypeSelector}
-                onChange={handleEndTypeChange}
-            >
-                <option value='noend'>no end date</option>
-                <option value='date'>on this day</option>
-                <option value='count'>after</option>
-            </select>
-            {selectedEndType === 'date' ? 
-                <input 
+        <div className={css.mainContainer} style={styles.dateContainer}>
+            <div className={css.startContainer}>
+                <label for="start" style={styles.startLabel}>Start</label>
+                <input
                     disabled={disabled}
-                    value={endDate}
-                    onChange={handleEndDateChange}
-                    className={styles.endDate}
+                    value={startDate}
+                    onChange={handleStartDateChange}
+                    className={css.startDate}
+                    style={styles.startDate}
                     type="date"
-                    id="end"
-                    name="end"
+                    id="start"
+                    name="start"
                 />
-            :(selectedEndType === 'count' ? 
-                <>
+            </div>
+            <div className={css.endContainer}>
+                <label style={styles.endLabel}>End</label>
+                <select 
+                    disabled={disabled}
+                    value={selectedEndType}
+                    className={css.endType}
+                    style={styles.endType}
+                    onChange={handleEndTypeChange}
+                >
+                    <option value='noend'>no end date</option>
+                    <option value='date'>on this day</option>
+                    <option value='count'>after</option>
+                </select>
+                {selectedEndType === 'date' ? 
                     <input 
                         disabled={disabled}
-                        value={endCount}
-                        onChange={handleEndCountChange}
-                        className={styles.input}
-                        type='number'
-                        min={1}
-                        defaultValue={10}
+                        value={endDate}
+                        onChange={handleEndDateChange}
+                        className={css.endDate}
+                        style={styles.endDate}
+                        type="date"
+                        id="end"
+                        name="end"
                     />
-                    <label style={{marginLeft: 10}}>occurance</label>
-                </>
-                :null
-            )}
+                :(selectedEndType === 'count' ? 
+                    <>
+                        <input 
+                            disabled={disabled}
+                            value={endCount}
+                            onChange={handleEndCountChange}
+                            className={css.endCount}
+                            style={styles.endCount}
+                            type='number'
+                            min={1}
+                            defaultValue={10}
+                        />
+                        <label style={{marginLeft: 10}}>occurance</label>
+                    </>
+                    :null
+                )}
             </div>
-            </div>
+        </div>
     )
 }
 

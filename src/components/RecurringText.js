@@ -4,6 +4,7 @@ import { getDateWithZero, getMonthName, getWeekday } from '../utils/dateUtils';
 import { WEEKDAYS_MAP } from '../utils/weekConstants';
 
 function ReccurringText(props) {
+  	const styles = props?.styles || {}
     const {recurrenceData, dispatch} = useContext(RecurrenceContext);
     const {
         startDate,
@@ -50,7 +51,7 @@ function ReccurringText(props) {
 
 	if (repeat === 'weekly' && selectedWeeks?.length > 0) {
 		return (
-            <div style={{marginTop: 20}}>
+            <div style={{marginTop: 20, ...styles.recurrenceText}}>
             Occurs 
                 <span style={{fontWeight: 'bold', marginLeft: 5, marginRight: 5}}>
                     every {frequency>1 ? 'weeks on': ''} {getSelectedName()}
@@ -66,7 +67,7 @@ function ReccurringText(props) {
 				: `the ${selectedMonthDayOrder?.toLowerCase()} ${selectedMonthDay}`;
 
 		return (
-            <div style={{marginTop: 20}}>
+            <div style={{marginTop: 20, ...styles.recurrenceText}}>
                 Occurs 
                 <span style={{fontWeight: 'bold', marginLeft: 5, marginRight: 5}}>
                     {occursEvery} of every {frequency>1 ? 'months': 'month'}

@@ -27,8 +27,13 @@ function RecurrenceComponent(props) {
 
     useEffect(()=> {
       let payload = {...props}
-      if(props.cronExpression && props.cronExpression !== ""){
-        const schedule = getScheduleSettingsFromCronExp(props.repeat, props.cronExpression)
+      if(props.value){
+        payload = {...payload, ...props.value}
+      }
+      if(payload.cronExpression && payload.cronExpression !== ""){
+        const schedule = getScheduleSettingsFromCronExp(payload.repeat, payload.cronExpression)
+      if(payload.cronExpression && payload.cronExpression !== ""){
+        }
         if(schedule) {
           payload = {...payload, ...schedule}
         }
@@ -101,14 +106,14 @@ function RecurrenceComponent(props) {
     ])
     return (
         <div style={props?.styles?.root}>
-          <Frequency {...props}/>
+          <Frequency {...props} />
           {repeat === 'weekly' ?
-          <WeekSelection {...props}/>
+          <WeekSelection {...props} />
           :(repeat === 'monthly' ?
-          <MonthSelection />
+          <MonthSelection {...props} />
           : null)}
-          <DateSelection />
-          <ReccurringText />
+          <DateSelection {...props} />
+          <ReccurringText {...props} />
           {props.showCronExpression && (
           <div style={{marginTop: 20}}>
             {cronExpression}

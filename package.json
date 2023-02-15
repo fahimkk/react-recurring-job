@@ -1,6 +1,6 @@
 {
   "name": "@fahimkk/react-recurring-job",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "A simple react component for scheduling recurring jobs",
   "main": "dist/index.js",
   "module": "dist/index.es.js",

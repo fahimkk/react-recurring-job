@@ -3,7 +3,7 @@
         display:flex;
         flex-direction: row;
     }
-    .endTypeSelector {
+    .endType {
         margin-left: 20px;
     }
 }
@@ -12,7 +12,7 @@
     .endContainer {
         margin-top: 20px;
     }
-    .endTypeSelector {
+    .endType {
         margin-left: 24px;
     }
 }
@@ -24,13 +24,9 @@
     margin-left: 20px;
     margin-right: 20px;
 }
-.endTypeSelector {
+.endType {
     margin-right: 20px;
 }
-.endSelector {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-.input {
+.endCount {
     width: 50px;
 }
